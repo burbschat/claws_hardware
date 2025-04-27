@@ -1,0 +1,170 @@
+(footprint "Hamamatsu_Sxxx60-13xxXX"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "MPPC, small surface mount glass epoxy package")
+	(tags "Hamamatsu SiPM MPPC")
+	(property "Reference" "REF**"
+		(at -0.031519 -3.560188 180)
+		(layer "F.SilkS")
+		(uuid "4a71ce03-4167-4512-b0bf-1ed015708252")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Sxxx60-13xxXX"
+		(at 0.010662 1.598475 0)
+		(layer "F.Fab")
+		(uuid "4d2e5aaa-c017-497f-9bde-ab214894b685")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4ab3ae77-ee7d-4bfa-8e07-0729adaa4b77")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "82459d9e-f5c8-4754-ad31-2d8ed0bad1e1")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fbf29be3-e98b-43f0-9ff6-ad6d2fe917d3")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -1.78 -2.505)
+		(end 0.68 0.48)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "41796e1a-6553-447e-a15d-efdd49ca5fc0")
+	)
+	(fp_rect
+		(start -1.85 -2.575)
+		(end 0.75 0.55)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "b043861d-3000-46d1-b8f9-a80a63b67e06")
+	)
+	(fp_rect
+		(start -1.6 -2.325)
+		(end 0.5 0.3)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "547e1e38-adeb-4dc5-94a4-bd8a792e2957")
+	)
+	(fp_text user "${REFERENCE}"
+		(at -0.436913 -0.975084 0)
+		(layer "F.Fab")
+		(uuid "c543f233-50ea-4c14-9152-6fd8dc9aaf8d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd custom
+		(at 0 0)
+		(size 0.6 0.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives)
+		(uuid "99775947-26ec-49a4-b9b4-321c12ada1bf")
+	)
+	(pad "2" smd custom
+		(at 0 -2.025)
+		(size 0.6 0.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives)
+		(uuid "b22b07b3-e99b-4021-bffa-b041a4810d10")
+	)
+	(pad "3" smd custom
+		(at -1.1 -2.025)
+		(size 0.6 0.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives)
+		(uuid "e54800e1-e528-4e24-af54-a59a051f7943")
+	)
+	(pad "4" smd custom
+		(at -1.1 0)
+		(size 0.6 0.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives)
+		(uuid "b37f4d5f-ba65-47f6-af9f-adfbc8808e35")
+	)
+	(model "${KIPRJMOD}/../lib/3d_models/Sxxx60-13xxXX.step"
+		(offset
+			(xyz 0.5 2.325 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 -180)
+		)
+	)
+)

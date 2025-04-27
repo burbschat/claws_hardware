@@ -1,0 +1,7 @@
+figures/**/*.png filter=lfs diff=lfs merge=lfs -text
+figures/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+figures/**/*.PNG filter=lfs diff=lfs merge=lfs -text
+figures/**/*.JPG filter=lfs diff=lfs merge=lfs -text
+figures/**/*.svg filter=lfs diff=lfs merge=lfs -text
+figures/**/*.pdf filter=lfs diff=lfs merge=lfs -text
+figures/**/*.pkl filter=lfs diff=lfs merge=lfs -text

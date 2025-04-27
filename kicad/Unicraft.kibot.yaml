@@ -1,0 +1,89 @@
+# Gerber and drill files for Unicraft, without stencil
+# URL: https://unicraft-jp.com/
+# Based on setting used by Gerber Zipper (https://github.com/g200kg/kicad-gerberzipper)
+kibot:
+  version: 1
+
+groups:
+  - name: _Unicraft@_KIBOT_IMPORT_ID@
+    outputs:
+      - _Unicraft_gerbers@_KIBOT_IMPORT_ID@
+      - _Unicraft_drill@_KIBOT_IMPORT_ID@
+
+outputs:
+  - name: _Unicraft_gerbers@_KIBOT_IMPORT_ID@
+    comment: Gerbers compatible with Unicraft
+    type: gerber
+    dir: @_KIBOT_MANF_DIR@
+    options: &gerber_options
+      exclude_edge_layer: true
+      exclude_pads_from_silkscreen: true
+      plot_sheet_reference: false
+      plot_footprint_refs: @_KIBOT_PLOT_FOOTPRINT_REFS@
+      plot_footprint_values: @_KIBOT_PLOT_FOOTPRINT_VALUES@
+      force_plot_invisible_refs_vals: false
+      tent_vias: true
+      use_protel_extensions: true
+      create_gerber_job_file: false
+      gerber_precision: 4.6
+      use_gerber_x2_attributes: true
+      use_gerber_net_attributes: false
+      line_width: 0.15
+      subtract_mask_from_silk: false
+      inner_extension_pattern: '.g%n'
+      custom_reports:
+        - output: 'file_name.txt'
+          content: '■基板データ　ファイル名指定\n\n各レイヤのガーバーデータのファイル名を""内にご記入ください。\nなお、データの無いレイヤは何も記入しないでください。\n本ファイルを基板データとともにzipファイルに圧縮していただき、正式見積もり・ご発注の際に添付ください。\n\n====================================================================================================\n部品面（第１層）銅箔パターン： "${filename(F.Cu)}"\n第２層（内層）　銅箔パターン： "${filename(In1.Cu)}"\n第３層（内層）　銅箔パターン： "${filename(In2.Cu)}"\n第４層（内層）　銅箔パターン： "${filename(In3.Cu)}"\n第５層（内層）　銅箔パターン： "${filename(In4.Cu)}"\n半田面銅箔パターン： "${filename(B.Cu)}"\n部品面レジスト： "${filename(F.Mask)}"\n半田面レジスト： "${filename(B.Mask)}"\n部品面シルク印刷： "${filename(F.SilkS)}"\n半田面シルク印刷： "${filename(B.SilkS)}"\nプリント基板 外形： "${filename(Edge.Cuts)}"\nドリルファイル： "${basename}.drl"\nノンスルーホール　ドリルファイル（２層以上の基板でのノンスルーホール）： ""\nその他ファイル①（ドリルマップ）： "${basename}-drl_map.gbr"\nその他ファイル②（ドリルリスト）： "${basename}-drl.rpt"\nその他ファイル③（）： ""\n====================================================================================================\n\n＜ご注意事項＞\n・全てのデータは部品面視(第１層面視)の透過図としてください。\n・ガーバーフォーマットは拡張ガーバー（RS-274X）としてください。\n・ドリルファイルはエキセロン形式でも可能です。\n・レポートファイルなどの添付は不要です。\n\n\n\n株式会社ユニクラフト\nhttps://unicraft-jp.com/\n\nVer1.01'
+
+    layers:
+      # Note: a more generic approach is to use 'copper' but then the filenames
+      # are slightly different.
+      @_KIBOT_GERBER_LAYERS@
+      @_KIBOT_F_PASTE@
+      @_KIBOT_B_PASTE@
+
+  - name: _Unicraft_drill@_KIBOT_IMPORT_ID@
+    comment: Drill files compatible with Unicraft
+    type: excellon
+    dir: @_KIBOT_MANF_DIR@
+    options:
+      pth_and_npth_single_file: true
+      map:
+        type: gerber
+      report:
+        filename: '%f-drl.rpt'
+      zeros_format: SUPPRESS_LEADING
+      left_digits: 3
+      right_digits: 3
+      output: "%f.drl"
+
+  - name: _Unicraft_compress@_KIBOT_IMPORT_ID@
+    comment: ZIP file for Unicraft
+    type: compress
+    dir: @_KIBOT_MANF_DIR_COMP@
+    options:
+      move_files: @_KIBOT_COMPRESS_MOVE@
+      files:
+        - from_output: _Unicraft_gerbers@_KIBOT_IMPORT_ID@
+          dest: /
+        - from_output: _Unicraft_drill@_KIBOT_IMPORT_ID@
+          dest: /
+
+...
+definitions:
+  _KIBOT_F_PASTE: ''
+  _KIBOT_B_PASTE: ''
+  _KIBOT_IMPORT_ID: ''
+  _KIBOT_IMPORT_DIR: 'Unicraft'
+  _KIBOT_MANF_DIR: '@_KIBOT_IMPORT_DIR@'
+  _KIBOT_MANF_DIR_COMP: '@_KIBOT_IMPORT_DIR@'
+  _KIBOT_PLOT_FOOTPRINT_REFS: true
+  _KIBOT_PLOT_FOOTPRINT_VALUES: true
+  _KIBOT_COMPRESS_MOVE: true
+  _KIBOT_GERBER_LAYERS: |
+      - copper
+            - F.SilkS
+            - B.SilkS
+            - F.Mask
+            - B.Mask
+            - Edge.Cuts

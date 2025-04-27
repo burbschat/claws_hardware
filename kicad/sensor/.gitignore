@@ -1,0 +1,6 @@
+*.log
+manufacturers
+pdf
+preflight
+bom
+*.kicad_prl

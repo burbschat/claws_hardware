@@ -10,7 +10,7 @@ variants:
   
 
 global:
-  variant: UnicraftAssembly
+  # variant: UnicraftAssembly
   filters:
   - number: 1007
   - number: 1015
